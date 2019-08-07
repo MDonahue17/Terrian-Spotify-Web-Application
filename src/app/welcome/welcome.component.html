@@ -1,0 +1,346 @@
+
+
+<div style="margin-top: 55px; overflow:hidden;" [hidden]="currentPlaying.name.length == 0">
+        <div class="currentPlaying-div" id="background-current-playing">
+                <div id="curPlayingDiv" class="center"
+                style="width:100%; text-align: center;  padding-top: 25px; padding-bottom: 25px; margin-bottom: 55px">
+                        <div *ngIf="currentPlaying.name.length != 0">
+                                <img [src]="currentPlaying.url" height="300px" style="float: center; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)">
+                                <h2 class="display-4" style="padding-top: 15px;">{{currentPlaying.name}}</h2>
+                                <h2>{{currentPlaying.artists}}</h2>
+                                <div class="center" style="margin-top: 35px; width: 60%;">
+                                        <a [routerLink]="['/song', currentPlaying.song.item.id]" style="text-decoration: none;">
+                                                <button class="rankings-buttons" style="background-color: #303030!important">
+                                                        Song Page
+                                                </button>
+                                        </a>
+                                </div>
+                        </div>
+                </div>
+
+        </div>
+        
+
+</div>
+
+<div [hidden]="currentPlaying.name.length != 0" style="margin: 65px 25px 15px 25px;">
+        <h3 class="display-3">Welcome!</h3> 
+        <div style="padding: 10px 80px 10px 80px;">
+                <h4  class="lead" style="font-size: 25px;">
+                        On this page, you can view some of the things that makes your Spotify account unique. <br/>
+                        On the Rankings Page, you can view your top artists and tracks from the 
+                        last four weeks, 6 months, and all-time. <br/>
+                        From this data - which is unavaialbe in any other Spotify application - 
+                        you can create playlists that are added
+                        to your account!
+                        
+                        Also, you should try playing a song on any of your devices and check out the Song page<br/><br/>
+                        HAVE FUN! 
+                </h4>
+        </div>
+        
+</div>
+
+<div id="playlist-div" *ngIf="this.playlists" style="margin: 15px 0px 0px 0px;">
+    <h3 class="display-3">Playlists</h3>
+    <div class ="row" id="cards-div" style="margin: 0 auto;">
+        <!--Number 1-->
+        <div *ngIf="this.playlists[0]">
+            <button id="playlist-button1" class="collapsible playlist-button" (click)="openContent(1)">
+                <div class="row" style="padding: 10px 10px 10px 10px;">
+                    <div class="col-3 pic">
+                        <span style="margin-left: 5px;">
+                            <img [src]="playlists[0].images[0].url" height="76px" style="border-radius: 15px; float: left; margin-top: 2px">
+                        </span>
+                    </div>
+                    <div class="col-8 title">
+                        <h4>{{playlists[0].name}}</h4>
+                        <small id="descHelp" class="form-text text-muted">
+                            By {{playlists[0].owner.display_name}}
+                        </small>
+                    </div>
+                    <div class="col-1">
+                    <span style="margin: 15px 10px 10px 10px; font-size: 25px; float: right;">
+                            &#43;
+                    </span>
+                    </div>
+                </div>
+                <div id="content-playlist1" class="content-playlist" style="margin-bottom: 10px">
+                        <p *ngIf="playlists[0].description"><span class="text-muted">Description:</span> {{playlists[0].description}}</p>
+                        <small id="descHelp" class="form-text text-muted">
+                           Tracks: {{playlists[0].tracks.total}}
+                        </small>
+                        <hr>
+                        <div>
+                            <small id="descHelp" *ngIf="playlists[0].tracks.items[0]" class="form-text text-muted">
+                                {{playlists[0].tracks.items[0].track.name}} - {{playlists[0].tracks.items[0].track.artists[0].name}}
+                            </small>
+                            <small id="descHelp" *ngIf="playlists[0].tracks.items[1]" class="form-text text-muted">
+                                    {{playlists[0].tracks.items[1].track.name}} - {{playlists[0].tracks.items[1].track.artists[0].name}}
+                            </small>
+                            <small id="2" *ngIf="playlists[0].tracks.items[2]" class="form-text text-muted">
+                                    {{playlists[0].tracks.items[2].track.name}} - {{playlists[0].tracks.items[2].track.artists[0].name}}
+                            </small> 
+                            <small id="descHelp" *ngIf="playlists[0].tracks.items[3]" class="form-text text-muted">
+                                    {{playlists[0].tracks.items[3].track.name}} - {{playlists[0].tracks.items[3].track.artists[0].name}}
+                            </small>  
+                            <small id="descHelp" *ngIf="playlists[0].tracks.items[4]" class="form-text text-muted">
+                                    {{playlists[0].tracks.items[4].track.name}} - {{playlists[0].tracks.items[4].track.artists[0].name}}
+                            </small> 
+                        </div>
+                    
+                </div>
+            </button> 
+        </div>
+
+        <!--Number 2-->
+        <div *ngIf="this.playlists[1]">
+                <button id="playlist-button2" class="collapsible playlist-button" (click)="openContent(2)">
+                        <div class="row" style="padding: 10px 10px 10px 10px;">
+                                <div class="col-3 pic">
+                                    <span style="margin-left: 5px;">
+                                        <img [src]="playlists[1].images[0].url" height="76px" style="border-radius: 15px; float: left; margin-top: 2px">
+                                    </span>
+                                </div>
+                                <div class="col-8 title">
+                                    <h4>{{playlists[1].name}}</h4>
+                                    <small id="descHelp" class="form-text text-muted">
+                                        By {{playlists[1].owner.display_name}}
+                                    </small>
+                                </div>
+                                <div class="col-1">
+                                <span style="margin: 15px 10px 10px 10px; font-size: 25px; float: right;">
+                                        &#43;
+                                </span>
+                                </div>
+                            </div>
+                    <div id="content-playlist2" class="content-playlist" style="margin-bottom: 10px">
+                            <p *ngIf="playlists[1].description"><span class="text-muted">Description:</span> {{playlists[1].description}}</p>
+                            <small id="descHelp" class="form-text text-muted">
+                               Tracks: {{playlists[1].tracks.total}}
+                            </small>
+                            <hr>
+                            <div>
+                                <small id="descHelp" *ngIf="playlists[1].tracks.items[0]" class="form-text text-muted">
+                                    {{playlists[1].tracks.items[0].track.name}} - {{playlists[1].tracks.items[0].track.artists[0].name}}
+                                </small>
+                                <small id="descHelp" *ngIf="playlists[1].tracks.items[1]" class="form-text text-muted">
+                                        {{playlists[1].tracks.items[1].track.name}} - {{playlists[1].tracks.items[1].track.artists[0].name}}
+                                </small>
+                                <small id="2" *ngIf="playlists[1].tracks.items[2]" class="form-text text-muted">
+                                        {{playlists[1].tracks.items[2].track.name}} - {{playlists[1].tracks.items[2].track.artists[0].name}}
+                                </small> 
+                                <small id="descHelp" *ngIf="playlists[1].tracks.items[3]" class="form-text text-muted">
+                                        {{playlists[1].tracks.items[3].track.name}} - {{playlists[1].tracks.items[3].track.artists[0].name}}
+                                </small>  
+                                <small id="descHelp" *ngIf="playlists[1].tracks.items[4]" class="form-text text-muted">
+                                        {{playlists[1].tracks.items[4].track.name}} - {{playlists[1].tracks.items[4].track.artists[0].name}}
+                                </small> 
+                    </div>
+                        
+                    </div>
+                </button> 
+        </div>
+        <!--Number 3-->
+        <div *ngIf="this.playlists[2]">
+                <button id="playlist-button3" class="collapsible playlist-button" (click)="openContent(3)">
+                        <div class="row" style="padding: 10px 10px 10px 10px;">
+                                <div class="col-3 pic">
+                                    <span style="margin-left: 5px;">
+                                        <img [src]="playlists[2].images[0].url" height="76px" style="border-radius: 15px; float: left; margin-top: 2px">
+                                    </span>
+                                </div>
+                                <div class="col-8 title">
+                                    <h4>{{playlists[2].name}}</h4>
+                                    <small id="descHelp" class="form-text text-muted">
+                                        By {{playlists[2].owner.display_name}}
+                                    </small>
+                                </div>
+                                <div class="col-1">
+                                <span style="margin: 15px 10px 10px 10px; font-size: 25px; float: right;">
+                                        &#43;
+                                </span>
+                                </div>
+                            </div>
+                    <div id="content-playlist3" class="content-playlist" style="margin-bottom: 10px">
+                            <p *ngIf="playlists[2].description"><span class="text-muted">Description:</span> {{playlists[2].description}}</p>
+                            <small id="descHelp" class="form-text text-muted">
+                               Tracks: {{playlists[2].tracks.total}}
+                            </small>
+                            <hr>
+                            <div>
+                                <small id="descHelp" *ngIf="playlists[2].tracks.items[0]" class="form-text text-muted">
+                                    {{playlists[2].tracks.items[0].track.name}} - {{playlists[2].tracks.items[0].track.artists[0].name}}
+                                </small>
+                                <small id="descHelp" *ngIf="playlists[2].tracks.items[1]" class="form-text text-muted">
+                                        {{playlists[2].tracks.items[1].track.name}} - {{playlists[2].tracks.items[1].track.artists[0].name}}
+                                </small>
+                                <small id="2" *ngIf="playlists[2].tracks.items[2]" class="form-text text-muted">
+                                        {{playlists[2].tracks.items[2].track.name}} - {{playlists[2].tracks.items[2].track.artists[0].name}}
+                                </small> 
+                                <small id="descHelp" *ngIf="playlists[2].tracks.items[3]" class="form-text text-muted">
+                                        {{playlists[2].tracks.items[3].track.name}} - {{playlists[2].tracks.items[3].track.artists[0].name}}
+                                </small>  
+                                <small id="descHelp" *ngIf="playlists[2].tracks.items[4]" class="form-text text-muted">
+                                        {{playlists[2].tracks.items[4].track.name}} - {{playlists[2].tracks.items[4].track.artists[0].name}}
+                                </small> 
+                    </div>
+                        
+                    </div>
+                </button> 
+        </div>
+        <!--Number 4-->
+        <div *ngIf="this.playlists[3]">
+                <button id="playlist-button4" class="collapsible playlist-button" (click)="openContent(4)">
+                        <div class="row" style="padding: 10px 10px 10px 10px;">
+                                <div class="col-3 pic">
+                                    <span style="margin-left: 5px;">
+                                        <img [src]="playlists[3].images[0].url" height="76px" style="border-radius: 15px; float: left; margin-top: 2px">
+                                    </span>
+                                </div>
+                                <div class="col-8 title">
+                                    <h4>{{playlists[3].name}}</h4>
+                                    <small id="descHelp" class="form-text text-muted">
+                                        By {{playlists[3].owner.display_name}}
+                                    </small>
+                                </div>
+                                <div class="col-1">
+                                <span style="margin: 15px 10px 10px 10px; font-size: 25px; float: right;">
+                                        &#43;
+                                </span>
+                                </div>
+                            </div>
+                    <div id="content-playlist4" class="content-playlist" style="margin-bottom: 10px">
+                            <p *ngIf="playlists[3].description"><span class="text-muted">Description:</span> {{playlists[3].description}}</p>
+                            <small id="descHelp" class="form-text text-muted">
+                               Tracks: {{playlists[3].tracks.total}}
+                            </small>
+                            <hr>
+                            <div>
+                                <small id="descHelp" *ngIf="playlists[3].tracks.items[0]" class="form-text text-muted">
+                                    {{playlists[3].tracks.items[0].track.name}} - {{playlists[3].tracks.items[0].track.artists[0].name}}
+                                </small>
+                                <small id="descHelp" *ngIf="playlists[3].tracks.items[1]" class="form-text text-muted">
+                                        {{playlists[3].tracks.items[1].track.name}} - {{playlists[3].tracks.items[1].track.artists[0].name}}
+                                </small>
+                                <small id="2" *ngIf="playlists[3].tracks.items[2]" class="form-text text-muted">
+                                        {{playlists[3].tracks.items[2].track.name}} - {{playlists[3].tracks.items[2].track.artists[0].name}}
+                                </small> 
+                                <small id="descHelp" *ngIf="playlists[3].tracks.items[3]" class="form-text text-muted">
+                                        {{playlists[3].tracks.items[3].track.name}} - {{playlists[3].tracks.items[3].track.artists[0].name}}
+                                </small>  
+                                <small id="descHelp" *ngIf="playlists[3].tracks.items[4]" class="form-text text-muted">
+                                        {{playlists[3].tracks.items[4].track.name}} - {{playlists[3].tracks.items[4].track.artists[0].name}}
+                                </small> 
+                    </div>
+                        
+                    </div>
+                </button> 
+        </div>
+        <!--Number 5-->
+        <div *ngIf="this.playlists[4]">
+                <button id="playlist-button5" class="collapsible playlist-button" (click)="openContent(5)">
+                        <div class="row" style="padding: 10px 10px 10px 10px;">
+                                <div class="col-3 pic">
+                                    <span style="margin-left: 5px;">
+                                        <img [src]="playlists[4].images[0].url" height="76px" style="border-radius: 15px; float: left; margin-top: 2px">
+                                    </span>
+                                </div>
+                                <div class="col-8 title">
+                                    <h4>{{playlists[4].name}}</h4>
+                                    <small id="descHelp" class="form-text text-muted">
+                                        By {{playlists[4].owner.display_name}}
+                                    </small>
+                                </div>
+                                <div class="col-1">
+                                <span style="margin: 15px 10px 10px 10px; font-size: 25px; float: right;">
+                                        &#43;
+                                </span>
+                                </div>
+                            </div>
+                    <div id="content-playlist5" class="content-playlist" style="margin-bottom: 10px">
+                            <p *ngIf="playlists[4].description"><span class="text-muted">Description:</span> {{playlists[4].description}}</p>
+                            <small id="descHelp" class="form-text text-muted">
+                               Tracks: {{playlists[4].tracks.total}}
+                            </small>
+                            <hr>
+                            <div>
+                                <small id="descHelp" *ngIf="playlists[4].tracks.items[0]" class="form-text text-muted">
+                                    {{playlists[4].tracks.items[0].track.name}} - {{playlists[4].tracks.items[0].track.artists[0].name}}
+                                </small>
+                                <small id="descHelp" *ngIf="playlists[4].tracks.items[1]" class="form-text text-muted">
+                                        {{playlists[4].tracks.items[1].track.name}} - {{playlists[4].tracks.items[1].track.artists[0].name}}
+                                </small>
+                                <small id="2" *ngIf="playlists[4].tracks.items[2]" class="form-text text-muted">
+                                        {{playlists[4].tracks.items[2].track.name}} - {{playlists[4].tracks.items[2].track.artists[0].name}}
+                                </small> 
+                                <small id="descHelp" *ngIf="playlists[4].tracks.items[3]" class="form-text text-muted">
+                                        {{playlists[4].tracks.items[3].track.name}} - {{playlists[4].tracks.items[3].track.artists[0].name}}
+                                </small>  
+                                <small id="descHelp" *ngIf="playlists[4].tracks.items[4]" class="form-text text-muted">
+                                        {{playlists[4].tracks.items[4].track.name}} - {{playlists[4].tracks.items[4].track.artists[0].name}}
+                                </small> 
+                    </div>
+                        
+                    </div>
+                </button> 
+        </div>
+        <!--Number 6-->
+        <div *ngIf="this.playlists[5]">
+                <button id="playlist-button6" class="collapsible playlist-button" (click)="openContent(6)">
+                        <div class="row" style="padding: 10px 10px 10px 10px;">
+                                <div class="col-3 pic">
+                                    <span style="margin-left: 5px;">
+                                        <img [src]="playlists[5].images[0].url" height="76px" style="border-radius: 15px; float: left; margin-top: 2px">
+                                    </span>
+                                </div>
+                                <div class="col-8 title">
+                                    <h4>{{playlists[5].name}}</h4>
+                                    <small id="descHelp" class="form-text text-muted">
+                                        By {{playlists[5].owner.display_name}}
+                                    </small>
+                                </div>
+                                <div class="col-1">
+                                <span style="margin: 15px 10px 10px 10px; font-size: 25px; float: right;">
+                                        &#43;
+                                </span>
+                                </div>
+                            
+                    </div>
+                    <div id="content-playlist6" class="content-playlist" style="margin-bottom: 10px">
+                            <p *ngIf="playlists[5].description"><span class="text-muted">Description:</span> {{playlists[5].description}}</p>
+                            <small id="descHelp" class="form-text text-muted">
+                               Tracks: {{playlists[5].tracks.total}}
+                            </small>
+                            <hr>
+                            <div>
+                                <small id="descHelp" *ngIf="playlists[5].tracks.items[0]" class="form-text text-muted">
+                                    {{playlists[5].tracks.items[0].track.name}} - {{playlists[5].tracks.items[0].track.artists[0].name}}
+                                </small>
+                                <small id="descHelp" *ngIf="playlists[5].tracks.items[1]" class="form-text text-muted">
+                                        {{playlists[5].tracks.items[1].track.name}} - {{playlists[5].tracks.items[1].track.artists[0].name}}
+                                </small>
+                                <small id="2" *ngIf="playlists[5].tracks.items[2]" class="form-text text-muted">
+                                        {{playlists[5].tracks.items[2].track.name}} - {{playlists[5].tracks.items[2].track.artists[0].name}}
+                                </small> 
+                                <small id="descHelp" *ngIf="playlists[5].tracks.items[3]" class="form-text text-muted">
+                                        {{playlists[5].tracks.items[3].track.name}} - {{playlists[5].tracks.items[3].track.artists[0].name}}
+                                </small>  
+                                <small id="descHelp" *ngIf="playlists[5].tracks.items[4]" class="form-text text-muted">
+                                        {{playlists[5].tracks.items[4].track.name}} - {{playlists[5].tracks.items[4].track.artists[0].name}}
+                                </small> 
+                    </div>
+                        
+                    </div>
+                </button> 
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+</div>

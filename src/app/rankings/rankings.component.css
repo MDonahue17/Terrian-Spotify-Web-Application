@@ -1,0 +1,36 @@
+#row {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+  }
+  
+  #cardsID {
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 25px;
+    border-width: 2px;
+  
+  }
+  
+  img.card-img-top {
+      border-radius: 23px;
+      height: 200px; width: 100%; overflow: hidden;
+  }
+  
+  h5.card-title {
+      padding-top: 5px;
+      padding-right: 3px;
+      padding-bottom: 5px;
+      padding-left: 8px;
+  }
+  
+  h6.card-subtitle {
+      padding-top: 5px;
+      padding-right: 3px;
+      padding-bottom: 5px;
+      padding-left: 8px;
+  }

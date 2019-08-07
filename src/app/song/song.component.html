@@ -1,0 +1,64 @@
+<div id="songPage" style="height:100vh; background-color: black;">
+    <div class="currentPlaying-div" id="background-current-playing" style="z-index: 2; position: absolute;">
+        <div class="row">
+            <div class="col">
+                    <div class="center" id="albumDisplay" style="width:500px; text-align: center; margin-top: 7%">
+                            <img [src]="song.album.images[0].url" id="albumId" height="300px">
+                            <h2 class="display-4" id="songName" style="padding-top: 15px; color:white; ">{{song.name}}</h2>
+                            <h2 id="artistName" style="color:white">{{artistsName}}</h2>
+                    </div>
+            </div>
+            <div class="col" style="margin-top: 75px;">
+                <div class="center" style="margin-top: 100px; padding-right: 5px;">
+                    <button class="play" (click)="playPause()" style="outline: none">
+                        <h2 id="play" class="center" style="font-size: 250%;
+                        left: 5px;
+                        position: absolute; z-index: 0;
+                        top: 106px; left: 52px; display: none">
+                            &#9655;
+                        </h2>
+                        <h2 id="pause" class="center" style="font-size: 350%; left: 5px; 
+                        position: absolute; transform:rotate(90deg);
+                        z-index: 1; top:98px; left: 55px; display: block">
+                                =
+                        </h2>
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button (click)='skipBack()' style="background:transparent; border: transparent; outline: none">
+                            <i class="fa fa-backward" style="font-size: 55px; color: white;"></i>
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button (click)='skipNext()' style="background:transparent; border: transparent; outline: none">
+                            <i class="fa fa-forward" style="font-size: 55px; color: white;"></i>
+                        </button>
+                    </div>
+                </div>
+                <div style="padding-top: 35px;">
+                    <div class="row">
+                        <div class="col">
+                            <button (click)="shuffleTracks()" id="shuffleButton"
+                            style="background: transparent; border: transparent; color:lightgrey; outline: none">
+                                <h6>Shuffle</h6>
+                            </button>
+                        </div>
+                        <div class="col center">
+                            <button (click)="favorite()" id="favoriteButton"
+                            style="background: transparent; border: transparent; color:lightgrey; outline: none">
+                                <h6>Favorite</h6>
+                            </button>         
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="z-index: 0; position: absolute; height: 100%; width: 100%;">
+        <img class= "blur" id="backgroundId" style="z-index: 0; position: absolute; top: 0px; left: 0px;">
+    </div>
+    
+    
+</div>

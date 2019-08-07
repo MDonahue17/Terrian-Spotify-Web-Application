@@ -1,0 +1,85 @@
+<head>
+  
+
+</head>
+<body>
+  <div style="margin: 65px 0px 0px 0px;">
+    <h3 class="display-3" style="padding-left: 25px;">Rankings</h3>
+    <div id="wrapper">
+      <div class="button-div text-center" id="left">
+          <button id="artists" class="rankings-buttons" (click)="artistValue='short_term'" (click)='artistButton()'>
+              Top Artists of the Last 4 Weeks
+          </button>
+
+          
+          <button id="artists" class="rankings-buttons" (click)="artistValue='medium_term'" (click)='artistButton()'>
+              Top Artists of the Last 6 Months
+          </button>
+
+          <button id="artists" class="rankings-buttons" (click)="artistValue='long_term'" (click)='artistButton()'>
+            Top Artists of All Time
+          </button>
+            
+      </div>
+      <div class="button-div" id="right">
+          
+          <button id="songs" class="rankings-buttons" (click)="trackValue='short_term'" (click)='tracksButton()'>
+              Top Tracks of the Last 4 Weeks
+          </button>
+          
+          <button id="songs" class="rankings-buttons" (click)="trackValue='medium_term'" (click)='tracksButton()'>
+              Top Tracks of the Last 6 Months
+          </button>
+          
+          <button id="songs" class="rankings-buttons" (click)="trackValue='long_term'" (click)='tracksButton()'>
+              Top Tracks of All Time
+          </button>
+
+      </div>
+    </div>
+  
+  </div>
+  <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Playlist Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <form #form="ngForm">
+          <div class="form-group">
+            <label for="name" >Name</label>
+            <input id="name" class="form-control" name="name" [(ngModel)]="createPlaylistInput.name"/>
+          </div>
+          <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea id="desc" name="desc" class="form-control" rows="3" 
+            [(ngModel)]="createPlaylistInput.desc"></textarea>
+            <small id="descHelp" class="form-text text-muted">
+              <i>Optional</i>
+            </small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn rankings-buttons" (click)="createPlaylistOfTopData()" 
+          (click)="modal.close('Save click')">Create!</button>
+      </div>
+  </ng-template>
+  
+  <div style="padding-top:7px;">
+    <div id="create-playlist-div" *ngIf='tracks'>
+        <button id="create-playlist" class="rankings-buttons" (click)='open(content)'>
+            Create Playlist
+        </button>
+    </div>
+  </div>
+
+  <div [innerHtml]="safe" class ="row" id="cards-div">
+  </div>
+  
+</body>
+
+

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      Terrian
+    </a>
+  
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+  
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" [ngClass]="{ 'active': pageActive.welcomeActive }"
+          (click)="turnToFalse(); pageActive.welcomeActive = true;">
+              <a class="nav-link" [routerLink]="['/welcome']">Home</a>
+          </li>
+          <li class="nav-item" [ngClass]="{ 'active': pageActive.rankingsActive }" 
+          (click)="turnToFalse(); pageActive.rankingsActive = true;">
+            <a class="nav-link" [routerLink]="['/rankings']">Rankings</a>
+          </li>
+      </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+
+<footer class="page-footer fixed-bottom navbar-dark">
+  <div class="row">
+    <div class="col-2 navbar-brand" style="text-align: left; margin-left: 25px;">
+      Terrian
+    </div>
+    <div class="col navbar-brand" style="text-align: right; margin-right: 25px;" *ngIf="user.length != 0">
+      Hello, {{user}}
+    </div>
+  </div>  
+</footer>
+
+
